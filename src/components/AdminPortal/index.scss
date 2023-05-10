@@ -1,0 +1,72 @@
+@import '../../css-config/mixins.scss';
+
+.portal-main-content{
+    //position: relative;
+    margin:0 40px;
+    //border: 3px solid red;
+   //width: 100%;
+   .portal-body {
+    //position:absolute;
+    border: 3px solid green;
+    display: flex;
+    flex-direction: row;
+    //justify-content: space-around;
+
+    .dropdown-menu {
+        position: relative;
+        display: inline-block;
+        &:hover{
+            .dropdown-content{
+                display: block;
+            }
+        }
+        .dropdown-btn{
+
+            background-color: rgba(black, 0.3);
+            width:100%;
+            color: black;
+            padding: 16px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            box-shadow: 2px 2px 1px 1px rgba(black, 0.5);
+            margin-right: 20px;
+        }
+        .dropdown-content{
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            span{
+                border:1px solid rgba(black, 0.8);
+                cursor: pointer;
+                display: block;
+                width:139%;
+                color:black;
+                padding: 16px 16px;
+                text-decoration: none;
+                text-transform: uppercase;
+                text-align: center;
+                font-size: 20px;
+                border-radius: 5px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                &:hover{
+                    background-color: #f1f1f1
+                }
+            }
+        }
+    }
+    .registered-employees-container{
+        border:2px solid green;
+        width:75%;
+    }
+  
+   }
+
+
+}

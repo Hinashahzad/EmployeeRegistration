@@ -1,0 +1,101 @@
+@import '../../css-config/mixins.scss';
+.main-content{
+    //border:2px solid red;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //width:100%;
+    .form-heading {
+        //border:2px solid blue;
+        margin-bottom: 20px;
+        padding: 10px;
+        .title{
+            font-size: 25px;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            &:hover{
+                color:blue;
+                background-color: rgba(black, 0.02);
+            }
+
+        }
+    }
+    .employee-registration-form {
+
+       // border:2px solid green;
+        background-color: rgba(black, 0.02);
+        padding: 10px 10px;
+        width: 80%;
+            .form-field{
+                //border: 2px solid rgb(145, 31, 31);
+                width: 100%;
+                padding: 15px 15px;
+                display: flex;
+                flex-direction: column;
+                label {
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    color:rgba(black, 0.9);
+                    margin-bottom: 10px;
+                    span{
+                        transform: translateY(-50%);
+                        color:red;
+                    }
+                }
+                .input-error{
+                    //border:2px solid black;
+                    display: flex;
+                    flex-direction: column;
+                    input {
+                        height:40px;
+                        width:80%;
+                       border:1px solid rgba(black,0.5);
+                        &::placeholder {
+                            font-size: 18px;
+                            color:rgba(black, 0.5);
+                            padding: 5px ;
+                        }
+                    }
+                    span{
+                        color:red;
+                        font-size: 18px;
+                    }
+                    
+                }
+            
+        }
+        .btn-container{
+            //border: 2px solid green;
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+            //justify-content: space-between;
+            gap:100px;
+            //justify-content: space-around;
+            margin-left: 20px;     
+            .btn-class  {
+                width:200px;
+                height:50px;
+                border:2px solid green;
+                text-transform: uppercase;
+                background-color: blue;
+                color:white;
+                font-weight: 900;
+                border:none;
+                outline: 0;
+                font-size: 18px;
+                box-shadow: 2px 2px 2px 1px black;
+                border-radius: 5px;
+                cursor: pointer;
+                &.cancel{
+                    background-color: black;
+                    color:white;
+                }
+            }       
+
+        }
+
+    }
+}
