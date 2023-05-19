@@ -1,0 +1,22 @@
+@import '../../css-config/mixins.scss';
+
+.employee-list-content{
+    //border: 2px solid green;
+    padding: 10px 10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    .employee-list-heading{
+        //border: 3px solid red;
+        margin:0 auto;
+        padding: 20px 20px;
+        .heading{
+            //border: 3px solid blue;
+            font-size: 2rem;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 800;
+           
+        }
+    }
+}
