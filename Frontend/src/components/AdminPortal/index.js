@@ -1,47 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useR } from 'react';
 import { v1 as uuidv1 } from 'uuid';
 import Header from '../Header/index';
 import './index.scss';
 import AddEmployee from '../AddEmployee';
 import EmployeeList from '../EmployeeList';
 import UpdateEmployee from '../UpdateEmployee';
-import { AiOutlineSearch } from 'react-icons/ai';
 import api from '../api/Employee';
+import { retreiveEmployees, addEmployees, deleteEmployee, updateEmployees } from '../api/CRUD-methods';
 
-const AdminPortal =()=>{
+const AdminPortal = () => {
     //const LOCAL_STORAGE_KEY = "contacts";
     const [contacts, setContacts] = useState([]);
     const [registerEmployee, setRegisterEmployee] = useState(false);
     const [employeeList, setEmployeeList] = useState(false);
     const [updateEmployee, setUpdateEmployee] = useState();
+    const [searchValue, setSearchValue] = useState("");
+    const [searchResult, setSearchResult] = useState([]);
     
-    
-const retreiveEmployees = async () => {
-  const response =  await api.get('employees/');
-  //const response = await axios.get(`/api/employees/`)
-  return response.data;
-}
+// This handler add the contact into the JSON File
 const addContactHandler = async (contact) =>
 {
-  const request ={
+  const request = { 
     id: uuidv1(),
     ...contact
   }
-  const response = await api.post("employees/", request);
-    //setContacts([...contacts, { id: uuidv1(), ...contact }]);
-    setContacts([...contacts, response.data]);
+  // addEmployee function is handled the api to add the Employees in the JSON file.
+  const response = addEmployees(request);
+    setContacts([...contacts, response]);
 };
-const updateContactHandler = async (contact)=> {
+
+// Update Contact Handler function is update the already registered Employees in JSON file.
+const updateContactHandler = async (contact )=> {
 const response = await api.put(`employees/${updateEmployee.id}`, contact);
-setContacts(contacts.map((item) => (item.id === response.data.id ? response.data : item)));
-  //setContacts([...contacts, contact]);
-  //setContacts(contact);
+
+//const response = updateEmployees(contact, updateEmployee);
+setContacts(contacts.map((item) => 
+  (item.id === response.data.id ? response.data : item)));
 }
   
-  const removeContactHandler =  async (id) =>
-  {
-    await api.delete(`employees/${id}`);
-
+const removeContactHandler =  async (id) =>{
+    deleteEmployee(id);
     const newContactList = contacts.filter((contact) =>
     {
       return contact.id !== id;
@@ -53,7 +51,23 @@ setContacts(contacts.map((item) => (item.id === response.data.id ? response.data
       setUpdateEmployee(props);
       setEmployeeList(false);
   }
-
+  const searchHandler =( searchValue ) => {
+      setSearchValue(searchValue);
+     if(searchValue !== "") {
+      const searchContacts = contacts.filter((contact) => {
+        return Object.values(contact)
+        .join(" ")
+        .toLowerCase()
+        .includes(searchValue.toLowerCase());
+      });
+      setSearchResult(searchContacts);
+      console.log(searchResult)
+     }
+     else{
+      setSearchResult(contacts);
+     }
+  };
+// Depency is EmployeeList. Whenever the Employee List is updated it retrive all employees
   useEffect(() =>
   {
     //const retrieve_contact = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -66,43 +80,12 @@ setContacts(contacts.map((item) => (item.id === response.data.id ? response.data
     
     getAllEmployees();
 
-  }, []);
+  }, [employeeList]);
   
-  /*useEffect(() =>
-  {
-    localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(contacts))
-    
-  }, [contacts])*/
 return(
     <div className='portal-main-content'>
       <Header />
       <div className='portal-body'>
-      
-      <div className='search-employee-container'>
-        <input className='search-employee'
-        type='text'
-        placeholder='Enter Employee details to search employee'></input>
-        <AiOutlineSearch/>
-        
-      </div>
-        <div className='dropdown-menu'>
-          <button className='dropdown-btn'> Select the option </button>
-          <div className='dropdown-content'>
-              <span onClick={()=>{ 
-                setRegisterEmployee(true);
-                setEmployeeList(false);
-                setUpdateEmployee("");
-                }
-                }> Add Employee </span>
-              <span onClick={()=>{ 
-                setEmployeeList(true);
-              setRegisterEmployee(false);
-              setUpdateEmployee("");
-              }}> Employees List</span>              
-          </div>
-        </div>
-      </div>
-
       <div className='show-container'>
       <div className='registered-employees-container'>
         { registerEmployee 
@@ -119,9 +102,11 @@ return(
             ( <div className='employees-list-container'>
             { employeeList  && (<div className='employee-list'>
               <EmployeeList 
-                contacts={contacts}   
+                contacts={searchValue.length < 1 ? contacts: searchResult}   
                 receiveUpdatedEmployee = {receiveUpdatedEmployee} 
-                getContactId={ removeContactHandler} />
+                getContactId={ removeContactHandler} 
+                term ={searchValue}
+                searchHandler={searchHandler}/>
               </div>)}
             </div>)}
         { updateEmployee && 
@@ -129,6 +114,24 @@ return(
             employee = { updateEmployee} 
             updateContactHandler = {updateContactHandler}  
             contacts = {contacts}/>)}
+        </div>
+      </div>
+     
+        <div className='dropdown-menu'>
+          <button className='dropdown-btn'> Select the option </button>
+          <div className='dropdown-content'>
+              <span onClick={()=>{ 
+                setRegisterEmployee(true);
+                setEmployeeList(false);
+                setUpdateEmployee("");
+                }
+                }> Add Employee </span>
+              <span onClick={()=>{ 
+                setEmployeeList(true);
+              setRegisterEmployee(false);
+              setUpdateEmployee("");
+              }}> Employees List</span>              
+          </div>
         </div>
       </div>
     </div>)

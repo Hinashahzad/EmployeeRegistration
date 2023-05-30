@@ -13,8 +13,8 @@ const EmployeeCard = (props) => {
     jobTitle } = props.contact;
   return (
     <div className="employee-card">
-      <div className="card-content">
-        <div className="card-image">
+      <div className="card-content" key={id}>
+        <div className="card-image" >
           <img src={user} alt=""></img>
         </div>
         <div className="card-text">

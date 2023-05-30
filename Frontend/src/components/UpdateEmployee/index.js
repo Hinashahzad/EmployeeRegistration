@@ -2,19 +2,25 @@ import React,{ useEffect, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { employeeRegistrationSchema } from "../../ValidationSchema";
 import { useForm } from 'react-hook-form';
+import './index.scss';
 
-const UpdateEmployee =( props) =>{
+const UpdateEmployee =( props ) => {
     const [employee, setEmployee] = useState(props.employee);
     const { register,
         handleSubmit,
         formState: { errors },
         reset } = useForm({ resolver: yupResolver(employeeRegistrationSchema) });
 
+    
     const updateOnSubmit =(data) => {
         console.log("Inside the Update Component ", data);
         props.updateContactHandler(data);
         setEmployee({firstName:"", lastName:"", email:"", address:"", phone:"", jobTitle:""});
+        //reset();
 }
+useEffect(()=>{
+    console.log("Update UseEffect is calling....");
+}, [])
     return(<>
             <div className="main-content">
             <div className="form-heading">
@@ -97,9 +103,6 @@ const UpdateEmployee =( props) =>{
                 <div className="btn-container">
                     <button className="btn-class" type="submit">
                         Update
-                    </button>
-                    <button className="btn-class cancel">
-                        Cancel
                     </button>
                 </div>
             </form>

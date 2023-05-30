@@ -1,4 +1,4 @@
-import React ,{useState}from "react";
+import React ,{useState, useEffect}from "react";
 import { userSchema} from '../../ValidationSchema/index';
 import { yupResolver } from "@hookform/resolvers/yup"; 
 import { useForm } from "react-hook-form";
@@ -33,15 +33,16 @@ const Admin =()=> {
                
             }
         }, 1000);
-       
-       
         }
+
+        useEffect(()=>{
+            console.log("Admin UseEffect is calling....");
+        }, [])
 return (
 <div className="main-div"> 
    <div className="main-content">
     <div className="heading">
         <span className="heading-text"> Employee Registration System </span>
-        
     </div>
     <div className="content">
         <form className="Admin-login-form" onSubmit={handleSubmit(onSubmit)}>

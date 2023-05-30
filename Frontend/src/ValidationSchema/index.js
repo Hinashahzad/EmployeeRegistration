@@ -22,7 +22,9 @@ export const employeeRegistrationSchema = yup.object().shape(
         address: yup.string()
         .required( "Address is required" ),
         phone: yup.string()
-        .matches( /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Phone number is not valid" ),
+        .matches( /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, "Phone number is not valid" )
+        .required("Phone number is required"),
+        
         /*age: yup.string().test(
             "DOB",
             "error message",

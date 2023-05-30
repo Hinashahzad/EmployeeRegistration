@@ -30,3 +30,7 @@ Add the below line under the script in `package.json` file to automatically save
         - Delete the Existing Employee
 ## BodyParser
 This file is used to parse the body of the request.As this is the pure Vanilla JavaSCript Backend Project so, by returning the Promise, the data is accepting from client side to server side before store the new, and updating record in `Employee.json`. 
+
+## Run the Backend 
+Navigate to the Backend directory and type the below command 
+    `npm run start`

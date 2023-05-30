@@ -1,6 +1,6 @@
 @import '../../css-config/mixins.scss';
 
-.portal-main-content{
+.portal-main-content {
     //position: relative;
     margin:0 40px;
     //border: 3px solid red;
@@ -12,6 +12,14 @@
     flex-direction: row;
     //justify-content: space-around;
 
+    .show-container {
+        width:100%;
+    .registered-employees-container{
+        //border:2px solid green;
+        width:75%;
+    }
+
+   }
     .dropdown-menu {
         position: relative;
         display: inline-block;
@@ -21,7 +29,6 @@
             }
         }
         .dropdown-btn{
-
             background-color: blue;
             width:100%;
             color: white;
@@ -32,8 +39,7 @@
             font-weight: bold;
             border-radius: 5px;
             text-transform: uppercase;
-            
-            margin-right: 20px;
+            //margin-right: 20px;
             box-shadow: 2px 2px 2px 1px black;
         }
         .dropdown-content{
@@ -47,7 +53,7 @@
                 border:1px solid rgba(black, 0.8);
                 cursor: pointer;
                 display: block;
-                width:139%;
+                width:109%;
                 color:black;
                 padding: 16px 16px;
                 text-decoration: none;
@@ -63,44 +69,10 @@
             }
         }
     }
-    .search-employee-container{
-       // border:2px solid green;
-        width:75%;
-        display:flex;
-        flex-direction: row;
-        gap:10px;
-        .search-employee{
-                width: 95%;
-                height:100%;
-                border:1px solid rgba(black, 0.3);
-                border-top: none;
-                border-left: none;
-                border-right: none;
-                border-bottom: none;
-                &::placeholder{
-                    padding: 5px 5px;
-                    font-size: 18px;
-                }
-        }
-        svg{
-            transform:translate(-50%);
-            //size:40px;
-            color:blue;
-            margin-top:15px;
-            cursor:pointer;
-            margin-left: 5px;
-            font-size: 25px;
-        }
-    }
+    
   
    }
-   .show-container{
-    .registered-employees-container{
-        //border:2px solid green;
-        width:75%;
-    }
-
-   }
+   
 
 
 }

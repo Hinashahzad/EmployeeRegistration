@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { employeeRegistrationSchema } from "../../ValidationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {FaUserAlt} from 'react-icons/fa';
-import {AiOutlineCheck} from 'react-icons/ai'
+import { FaUserAlt } from 'react-icons/fa';
+import { AiOutlineCheck } from 'react-icons/ai'
 import './index.scss';
 const AddEmployee = (props) => {
     
@@ -21,6 +21,10 @@ const AddEmployee = (props) => {
         }, 1000);
         reset();
     }
+
+    useEffect(()=>{
+        console.log("ADD Employee UseEffect is calling....");
+    }, [])
     return (
         <div className="main-content">
             <div className="form-heading">
@@ -78,7 +82,7 @@ const AddEmployee = (props) => {
                         <label>Contact no<span> * </span></label>
                         <div className="input-error">
                             <input
-                                type="number"
+                                type="phoneno"
                                 autoComplete="off"
                                 placeholder="Enter contact number"
                                 {...register("phone")}
@@ -103,9 +107,10 @@ const AddEmployee = (props) => {
                        <AiOutlineCheck />
                        </div>
                         <span>Record added <FaUserAlt /></span></div>)}
-                    <button className="add" type="submit">
+                    <button className="btn-class" type="submit">
                         Add
                     </button>
+                    
                    
                 </div>
             </form>

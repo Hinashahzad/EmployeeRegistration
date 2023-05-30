@@ -1,22 +1,44 @@
 @import '../../css-config/mixins.scss';
 
-.employee-list-content{
+.employee-list-content {
     //border: 2px solid green;
     padding: 10px 10px;
     display:flex;
     flex-direction: column;
-    justify-content: center;
-    .employee-list-heading{
-        //border: 3px solid red;
-        margin:0 auto;
-        padding: 20px 20px;
-        .heading{
-            //border: 3px solid blue;
-            font-size: 2rem;
-            text-transform: uppercase;
-            text-align: center;
-            font-weight: 800;
-           
+    justify-content: flex-start;
+    .search-employee-container {
+       //border:2px solid red;
+        width:100%;
+        display:flex;
+        flex-direction: row;
+        gap:10px;
+        input{
+                width: 95%;
+                border:1px solid rgba(black, 0.3);
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                border-bottom: none;
+                &::placeholder{
+                    padding: 5px 5px;
+                    font-size: 18px;
+                }
+        }
+        svg{
+            transform:translate(-45%);
+            //size:40px;
+            color:blue;
+            margin-top:15px;
+            cursor:pointer;
+            margin-left: 5px;
+            font-size: 25px;
+        }
+    }
+    .employee-list-details{
+        margin-top: 10px;
+        //border: 2px solid blue;
+        .employee-list{
+            //border: 3px solid orange;
         }
     }
 }
