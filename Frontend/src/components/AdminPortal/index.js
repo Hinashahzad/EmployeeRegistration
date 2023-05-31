@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useR } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v1 as uuidv1 } from 'uuid';
 import Header from '../Header/index';
 import './index.scss';
@@ -6,7 +6,7 @@ import AddEmployee from '../AddEmployee';
 import EmployeeList from '../EmployeeList';
 import UpdateEmployee from '../UpdateEmployee';
 import api from '../api/Employee';
-import { retreiveEmployees, addEmployees, deleteEmployee, updateEmployees } from '../api/CRUD-methods';
+import { retreiveEmployees, addEmployees, deleteEmployee} from '../api/CRUD-methods';
 
 const AdminPortal = () => {
     //const LOCAL_STORAGE_KEY = "contacts";

@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import './index.scss';
 import { FcApproval } from 'react-icons/fc';
-import AdminPortal from "../AdminPortal";
 
 const Admin =()=> {
     const[ auth, setAuth ] = useState(false); 

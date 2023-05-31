@@ -4,7 +4,7 @@
 npx create-react-app EmployeeRegistration
 
 ```bash
-  cd EmployeeRegistration
+  cd frontend
   npm start
 ```
 ## Installation dependancy
