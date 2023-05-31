@@ -52,3 +52,8 @@ Navigate to the Backend directory and type the below command
     `npm run start`
 
 
+
+## Employee Registration System
+
+![EmployeeRegistration](https://github.com/Hinashahzad/ContactList/blob/main/Frontend/src/images/EmployeeRegistration.png?raw=true)
+

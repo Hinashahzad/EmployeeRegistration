@@ -81,3 +81,8 @@ Overall, the Employee Registration web-based application provides a user-friendl
 
 ```
 
+
+## Employee Registration System
+
+![EmployeeRegistration](https://github.com/Hinashahzad/ContactList/blob/main/Frontend/src/images/EmployeeRegistration.png?raw=true)
+
